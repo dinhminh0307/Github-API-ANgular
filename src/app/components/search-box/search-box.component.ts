@@ -1,17 +1,23 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-search-box',
-  imports: [],
   templateUrl: './search-box.component.html',
-  styleUrl: './search-box.component.css'
+  styleUrls: ['./search-box.component.css']
 })
-export class SearchBoxComponent {
-  searchQuery: string = '';
+export class SearchBoxComponent implements AfterViewInit {
+  @ViewChild('searchInput') searchInput!: ElementRef;
 
-  @Output() searchEvent = new EventEmitter<string>();
+  ngAfterViewInit() {
+    console.log('ViewChild initialized:', this.searchInput); // Ensure it's available
+  }
 
   onSearch() {
-    this.searchEvent.emit(this.searchQuery);
+    if (this.searchInput) {
+      const query = this.searchInput.nativeElement.value; // Get input value safely
+      console.log('Search Query:', query);
+    } else {
+      console.error('Search input is not initialized');
+    }
   }
 }

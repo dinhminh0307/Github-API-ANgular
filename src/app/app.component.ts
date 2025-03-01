@@ -14,8 +14,5 @@ import { FormsModule, NgModel } from '@angular/forms'; // ✅ Import FormsModule
 export class AppComponent {
   title = 'my-app';
 
-  handleSearch(query: string) {
-    console.log('Searching for:', query);
-    // Call API to fetch GitHub users or repositories
-  }
+  
 }
