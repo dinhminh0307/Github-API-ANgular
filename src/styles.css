@@ -1,4 +1,180 @@
-/* You can add global styles to this file, and also import other style files */
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+/* General Styles */
+body {
+    background-color: #1a202c; /* Equivalent to bg-gray-900 */
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Layout */
+  .min-h-screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .flex {
+    display: flex;
+  }
+  
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .flex-1 {
+    flex: 1;
+  }
+  
+  .items-center {
+    align-items: center;
+  }
+  
+  .justify-center {
+    justify-content: center;
+  }
+  
+  /* Footer */
+  .footer {
+    padding: 1rem 0;
+    text-align: center;
+    color: #a0aec0; /* Equivalent to text-gray-500 */
+  }
+  
+  .footer span {
+    display: block;
+    font-size: 1.5rem;
+  }
+  
+  /* Grid Layout */
+  .grid {
+    display: grid;
+  }
+  
+  .grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
+  
+  @media (min-width: 768px) {
+    .md-grid-cols-2 {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .lg-grid-cols-3 {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+  }
+  
+  .gap-4 {
+    gap: 1rem;
+  }
+  
+  .mt-4 {
+    margin-top: 1rem;
+  }
+  
+  /* User Card */
+  .user-card {
+    display: flex;
+    align-items: center;
+    background-color: #2d3748; /* Equivalent to bg-gray-800 */
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-card img {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    border: 2px solid #4a5568; /* Equivalent to border-gray-600 */
+  }
+  
+  .user-card .info {
+    margin-left: 1rem;
+  }
+  
+  .user-card .info p {
+    font-size: 1.125rem;
+    font-weight: bold;
+  }
+  
+  .user-card .info a {
+    font-size: 0.875rem;
+    color: #a0aec0; /* Equivalent to text-gray-400 */
+    text-decoration: none;
+  }
+  
+  .user-card .info a:hover {
+    color: #63b3ed; /* Equivalent to text-blue-400 */
+  }
+  
+  /* Input and Button */
+  .search-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .search-box {
+    width: 100%;
+    max-width: 32rem;
+  }
+  
+  .search-box input {
+    width: 100%;
+    padding: 0.75rem;
+    border-top-left-radius: 0.375rem;
+    border-bottom-left-radius: 0.375rem;
+    background-color: #edf2f7; /* Equivalent to bg-gray-200 */
+    color: #2d3748; /* Equivalent to text-gray-800 */
+    border: none;
+    outline: none;
+  }
+  
+  .search-box button {
+    padding: 0 1.5rem;
+    background-color: #4a5568; /* Equivalent to bg-gray-700 */
+    color: white;
+    border-top-right-radius: 0.375rem;
+    border-bottom-right-radius: 0.375rem;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .search-box button:hover {
+    background-color: #2d3748;
+  }
+  
+  /* Navbar */
+  .navbar {
+    background-color: #2d3748; /* Equivalent to bg-gray-800 */
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .navbar .brand {
+    font-size: 1.125rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+  }
+  
+  .navbar .brand span {
+    margin-right: 0.5rem;
+  }
+  
+  .navbar a {
+    color: #a0aec0; /* Equivalent to text-gray-400 */
+    text-decoration: none;
+    margin: 0 0.5rem;
+  }
+  
+  .navbar a:hover {
+    color: white;
+  }
+  
