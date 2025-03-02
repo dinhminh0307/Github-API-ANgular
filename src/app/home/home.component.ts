@@ -10,10 +10,10 @@ import { GitHubUser } from '../models/user.type';
   selector: 'app-home',
   imports: [SearchBoxComponent, UserItemsComponent, NgIf],
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'] // ✅ Fixed property name
+  styleUrls: ['./home.component.css'] // Fixed property name
 })
 export class HomeComponent {
-  userData = signal<GitHubUser | null>(null); // ✅ Store GitHub user data
+  userData = signal<GitHubUser | null>(null); // Store GitHub user data
   isLoading = false;
   errorMessage = '';
 
@@ -25,19 +25,19 @@ export class HomeComponent {
   handleSearch(username: string) {
     this.isLoading = true;
     this.errorMessage = '';
-    this.userData.set(null); // ✅ Reset data before searching
+    this.userData.set(null); // Reset data before searching
 
     this.getUserService.getUser(username)
       .pipe(
         catchError((error) => {
           this.errorMessage = 'User not found or an error occurred.';
           this.isLoading = false;
-          return of(null); // ✅ Ensures observable flow is not broken
+          return of(null); // Ensures observable flow is not broken
         })
       )
       .subscribe((data) => {
         if (data) {
-          this.userData.set(data); // ✅ Corrected way to update signals
+          this.userData.set(data); // Corrected way to update signals
         }
         this.isLoading = false;
       });

@@ -6,6 +6,6 @@ import { GitHubUser } from '../../models/user.type';
   styleUrls: ['./user-items.component.css']
 })
 export class UserItemsComponent {
-  userData = input<GitHubUser | null>(); // ✅ Receive GitHub user data
+  userData = input<GitHubUser | null>(); // Receive GitHub user data
   
 }

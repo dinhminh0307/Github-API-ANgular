@@ -1,13 +1,13 @@
-<!-- ✅ Search Box Component -->
+<!-- Search Box Component -->
 <app-search-box (searchEvent)="handleSearch($event)"></app-search-box>
 
-<!-- ✅ Loading State -->
+<!-- Loading State -->
 <p *ngIf="isLoading" class="text-gray-500">Loading...</p>
 
-<!-- ✅ Error Message -->
+<!-- Error Message -->
 <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
 
-<!-- ✅ Display User Info -->
+<!-- Display User Info -->
 @if (userData() !== null) {
-  <app-user-items [userData]="userData()"></app-user-items> <!-- ✅ Use property binding -->
+  <app-user-items [userData]="userData()"></app-user-items> <!-- Use property binding -->
 }

@@ -6,14 +6,14 @@ import { Component, EventEmitter, Output, ViewChild, ElementRef } from '@angular
   styleUrls: ['./search-box.component.css']
 })
 export class SearchBoxComponent {
-  @Output() searchEvent = new EventEmitter<string>(); // ✅ Emit event to parent
+  @Output() searchEvent = new EventEmitter<string>(); // Emit event to parent
 
   @ViewChild('searchInput') searchInput!: ElementRef;
 
   onSearch() {
     const searchValue = this.searchInput.nativeElement.value.trim();
     if (searchValue) {
-      this.searchEvent.emit(searchValue); // ✅ Emit value to parent (Home)
+      this.searchEvent.emit(searchValue); // Emit value to parent (Home)
     }
   }
 }
