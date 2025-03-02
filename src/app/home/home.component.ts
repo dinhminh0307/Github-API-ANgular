@@ -13,7 +13,7 @@ import { GitHubUser } from '../models/user.type';
   styleUrls: ['./home.component.css'] // Fixed property name
 })
 export class HomeComponent {
-  userData = signal<GitHubUser | null>(null); // Store GitHub user data
+  usersList = signal<GitHubUser[]>([]); // Store GitHub user data
   isLoading = false;
   errorMessage = '';
 
@@ -21,24 +21,25 @@ export class HomeComponent {
 
   /**
    * Handles search input from SearchBoxComponent
+   * Calls GitHub API to fetch users containing the search keyword
    */
-  handleSearch(username: string) {
+  handleSearch(keyword: string) {
+    if (!keyword.trim()) return; // Prevent empty searches
+
     this.isLoading = true;
     this.errorMessage = '';
-    this.userData.set(null); // Reset data before searching
+    this.usersList.set([]); // Reset list before searching
 
-    this.getUserService.getUser(username)
+    this.getUserService.searchUsers(keyword)
       .pipe(
         catchError((error) => {
-          this.errorMessage = 'User not found or an error occurred.';
+          this.errorMessage = 'No users found or an error occurred.';
           this.isLoading = false;
-          return of(null); // Ensures observable flow is not broken
+          return of({ items: [] }); // Return an empty list if error occurs
         })
       )
-      .subscribe((data) => {
-        if (data) {
-          this.userData.set(data); // Corrected way to update signals
-        }
+      .subscribe((response) => {
+        this.usersList.set(response.items); // Store fetched users
         this.isLoading = false;
       });
   }

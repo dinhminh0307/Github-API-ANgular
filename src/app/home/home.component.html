@@ -7,7 +7,13 @@
 <!-- Error Message -->
 <p *ngIf="errorMessage" class="text-red-500">{{ errorMessage }}</p>
 
-<!-- Display User Info -->
-@if (userData() !== null) {
-  <app-user-items [userData]="userData()"></app-user-items> <!-- Use property binding -->
+<!-- Display List of Users -->
+@if (usersList()?.length ?? 0 > 0) {  <!-- Safe check with `?.` -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
+    @for (user of usersList()!; track user.id) {  <!-- Use `!` to assert non-null -->
+      <app-user-items [userData]="user"></app-user-items>
+    }
+  </div>
+} @else {
+  <p class="text-gray-500 mt-4">No users found.</p>
 }

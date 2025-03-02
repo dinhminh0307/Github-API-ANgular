@@ -7,7 +7,7 @@ import { GitHubUser } from '../models/user.type';
   providedIn: 'root'
 })
 export class GetUserService {
-  private baseUrl = 'https://api.github.com/users'; // GitHub API URL
+  private searchUrl = 'https://api.github.com/search/users?q='; // GitHub API URL
   http = inject(HttpClient); // Inject HttpClient
 
   constructor() { }
@@ -17,7 +17,7 @@ export class GetUserService {
    * @param username - The GitHub username to fetch
    * @returns Observable containing user data
    */
-  getUser(username: string): Observable<GitHubUser> {
-    return this.http.get<GitHubUser>(`${this.baseUrl}/${username}`);
+  searchUsers(keyword: string): Observable<{ items: GitHubUser[] }> {
+    return this.http.get<{ items: GitHubUser[] }>(`${this.searchUrl}${keyword}`);
   }
 }
