@@ -1,11 +1,11 @@
-import { Component } from '@angular/core';
-
+import { Component, input, Input} from '@angular/core';
+import { GitHubUser } from '../../models/user.type';
 @Component({
   selector: 'app-user-items',
-  imports: [],
   templateUrl: './user-items.component.html',
-  styleUrl: './user-items.component.css'
+  styleUrls: ['./user-items.component.css']
 })
 export class UserItemsComponent {
-
+  userData = input<GitHubUser | null>(); // ✅ Receive GitHub user data
+  
 }

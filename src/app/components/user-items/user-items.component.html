@@ -1,1 +1,13 @@
-<p>user-items works!</p>
+<div class="flex items-center bg-gray-800 p-4 rounded-lg shadow-lg">
+    <!-- User Avatar -->
+    <img [src]="userData()?.avatar_url" alt="User Avatar" class="w-14 h-14 rounded-full border-2 border-gray-600">
+    
+    <!-- User Info -->
+    <div class="ml-4 text-white">
+      <p class="text-lg font-semibold">{{ userData()?.name || userData()?.login }}</p>
+      <a [href]="userData()?.html_url" target="_blank" class="text-sm text-gray-400 hover:text-blue-400">
+        Visit Profile
+      </a>
+    </div>
+  </div>
+  
