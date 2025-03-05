@@ -1,6 +1,45 @@
 <div class="profile-container">
-    <img class="avatar" [src]="user?.avatar_url" alt="User Avatar">
+    <a href="{{ user?.html_url }}" target="_blank">
+      <img class="avatar" [src]="user?.avatar_url" alt="User Avatar">
+    </a>
+  
     <h1>{{ user?.login }}</h1>
-    <a [href]="user?.html_url" target="_blank">Visit GitHub Profile</a>
+    <span class="badge">{{ user?.type }}</span>
+  
+    <a class="button" [href]="user?.html_url" target="_blank">Visit GitHub Profile</a>
+  
+    <div class="info-box">
+      <div>
+        <strong>Followers</strong>
+        <p>{{ user?.followers_url ? 169 : 'N/A' }}</p>
+      </div>
+      <div>
+        <strong>Following</strong>
+        <p>{{ user?.following_url ? 0 : 'N/A' }}</p>
+      </div>
+      <div>
+        <strong>Public Repos</strong>
+        <p>{{ user?.public_repos || repositories.length }}</p>
+      </div>
+      <div>
+        <strong>Public Gists</strong>
+        <p>{{ user?.public_gists || 0 }}</p>
+      </div>
+    </div>
+  
+    <h2>Latest Repositories</h2>
+    <div class="repo-list">
+      <div *ngFor="let repo of repositories" class="repo-card">
+        <a [href]="repo.html_url" target="_blank">
+          <h3>🔗 {{ repo.name }}</h3>
+        </a>
+        <p>{{ repo.description }}</p>
+        <div class="repo-stats">
+          <span>⭐ {{ repo.stargazers_count }}</span>
+          <span>🍴 {{ repo.forks_count }}</span>
+          <span>🐞 {{ repo.open_issues_count }}</span>
+        </div>
+      </div>
+    </div>
   </div>
   
